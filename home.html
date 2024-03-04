@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/petite-vue"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #333;
+            font-size: 18px;
+        }
+        .container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .about-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Smart Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#google">Google Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#amazon">Amazon Alexa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apple">Apple HomeKit</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" v-prevent-mount-flicker>
+        <h1 class="text-center mb-4">Welcome to Smart Home System</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="card" id="google">
+                    <h2>Google Home Demo</h2>
+                    <p>Control your smart devices using Google Home.</p>
+                    <button class="btn btn-primary me-2" @click="toggleLights">Toggle Lights</button>
+                    <button class="btn btn-primary" @click="playMusic">Play Music</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="amazon">
+                    <h2>Amazon Alexa Demo</h2>
+                    <p>Control your smart devices using Amazon Alexa.</p>
+                    <button class="btn btn-secondary me-2" @click="toggleThermostat">Adjust Thermostat</button>
+                    <button class="btn btn-secondary" @click="orderGroceries">Order Groceries</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="apple">
+                    <h2>Apple HomeKit Demo</h2>
+                    <p>Control your smart devices using Apple HomeKit.</p>
+                    <button class="btn btn-secondary me-2" @click="lockDoors">Lock Doors</button>
+                    <button class="btn btn-secondary" @click="setTemperature">Set Temperature</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container about-section">
+        <h2 id="about">About</h2>
+        <p>This is a demo of a smart home system showcasing various smart assistants.</p>
+    </div>
+
+    <script>
+        const { createApp, reactive } = PetiteVue;
+
+        createApp({
+            data() {
+                return {
+                    lightsOn: false,
+                    musicPlaying: false,
+                    thermostatTemperature: 72
+                }
+            },
+            methods: {
+                toggleLights() {
+                    this.lightsOn = !this.lightsOn;
+                    // You can add logic here to control actual smart devices
+                },
+                playMusic() {
+                    this.musicPlaying = !this.musicPlaying;
+                    // You can add logic here to play music on actual smart devices
+                },
+                toggleThermostat() {
+                    // Example method for toggling thermostat
+                    this.thermostatTemperature = this.thermostatTemperature === 72 ? 75 : 72;
+                    // You can add logic here to adjust actual thermostat settings
+                },
+                orderGroceries() {
+                    // Example method for ordering groceries
+                    alert("Groceries ordered successfully!");
+                    // You can add logic here to place actual orders
+                },
+                lockDoors() {
+                    // Example method for locking doors
+                    alert("Doors locked successfully!");
+                    // You can add logic here to lock actual doors
+                },
+                setTemperature() {
+                    // Example method for setting temperature
+                    alert
