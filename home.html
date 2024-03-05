@@ -74,6 +74,8 @@
     </style>
 </head>
 <body>
+    <div id="app"></div>
+
     <header class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">Smart Home</a>
@@ -138,7 +140,7 @@
 
     <script>
         const { createApp, reactive } = PetiteVue;
-
+    
         createApp({
             data() {
                 return {
@@ -159,7 +161,7 @@
                 toggleThermostat() {
                     // Example method for toggling thermostat
                     this.thermostatTemperature = this.thermostatTemperature === 72 ? 75 : 72;
-                    // You can add logic here to  actual thermostat settings
+                    // You can add logic here to adjust actual thermostat settings
                 },
                 orderGroceries() {
                     // Example method for ordering groceries
@@ -173,4 +175,13 @@
                 },
                 setTemperature() {
                     // Example method for setting temperature
-                    alert
+                    // This method should prompt the user to enter a temperature
+                    let newTemperature = prompt("Enter the desired temperature:");
+                    if (newTemperature !== null) {
+                        this.thermostatTemperature = parseInt(newTemperature);
+                    }
+                }
+            }
+        }).mount('#app'); // Assuming you have a <div id="app"></div> in your HTML to mount the app
+    </script>
+    
